@@ -79,7 +79,7 @@ Once the Sidecar API is running, you’ll see output similar to this:
 
 With Sidecar running, you can access the exposed endpoints via a browser, [`Postman`](https://www.postman.com/){target=\_blank}, [`curl`](https://curl.se/){target=\_blank}, or your preferred tool.
 
-### Endpoints
+## Endpoints
 
 Sidecar API provides a set of REST endpoints that allow you to query different aspects of the chain, including blocks, accounts, and transactions. Each endpoint offers specific insights into the chain’s state and activities.
 
@@ -95,7 +95,7 @@ In response, you’ll see output similar to this (assuming you’re connected to
 
 --8<-- 'code/develop/toolkit/api-libraries/sidecar/asset-hub-node-version-response.md'
 
-For a complete list of available endpoints and their documentation, visit the [Sidecar API list endpoints](https://paritytech.github.io/substrate-api-sidecar/dist/){target=\_blank}. You can learn about the endpoints and how to use them in your applications.
+<swagger-ui src="/openapi-v1.yaml"/>
 
 ## Where to Go Next
 
