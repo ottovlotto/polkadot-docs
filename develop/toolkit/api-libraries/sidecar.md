@@ -95,7 +95,7 @@ In response, you’ll see output similar to this (assuming you’re connected to
 
 --8<-- 'code/develop/toolkit/api-libraries/sidecar/asset-hub-node-version-response.md'
 
-For a complete list of available endpoints and their documentation, visit the [Sidecar API list endpoints](https://paritytech.github.io/substrate-api-sidecar/dist/){target=\_blank}. You can learn about the endpoints and how to use them in your applications.
+!!swagger openapi-v1.yaml!!
 
 ## Where to Go Next
 
