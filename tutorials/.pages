@@ -1,5 +1,6 @@
 title: Tutorials
 nav:
   - index.md
+  - zero-to-hero
   - polkadot-sdk
   - interoperability
