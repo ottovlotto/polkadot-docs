@@ -7,11 +7,7 @@ description: This tutorial starts with a template and guides you step-by-step th
 
 ## Introduction
 
-This tutorial starts with a pre-built template and guides you step-by-step through the parachain development, testing, deployment, and maintenance cycle. This tutorial is intended for developers interested in blockchain development. It assumes you have basic knowledge of:
-
-- TODO
-- TODO
-- TODO
+This tutorial starts with a pre-built template and guides you step-by-step through the parachain development, testing, deployment, and maintenance cycle. This tutorial is intended for developers interested in blockchain development.
 
 By the end of this tutorial, you will be able to:
 
@@ -22,13 +18,13 @@ By the end of this tutorial, you will be able to:
 - Write benchmarking tests and execute the benchmarking tool to calculate extrinsic weights and fees
 - Upgrade the runtime of a Polkadot SDK-based blockchain without stopping the network or creating a fork
 - Deploy a parachain on a public test network
-- TODO (Obtain coretime)
+- Obtain coretime for block production
 
 ## Prerequisites
 
 Before you start the tutorial, you should: 
 
-- TODO
+- Visit []
 - TODO
 - TODO
 
