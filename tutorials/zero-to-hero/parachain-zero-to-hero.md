@@ -266,7 +266,7 @@ To add custom errors, use the `#[pallet::error]` macro to define the `Error` enu
 The `#[pallet::call]` macro defines the dispatchable functions (or calls) the pallet exposes to allow users or the runtime to interact with the pallet's logic and state. Update `src/lib.rs` to add the dispatchable calls for your counter pallet as follows:
 
 ```rust
---8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/build-custom-pallet/call_structure.rs'
+--8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/build-custom-pallet/lib.rs:73:183'
 ```
 
 ### Verify Compilation
@@ -276,6 +276,53 @@ Verifying that the code still compiles successfully after implementing all the p
 ```bash
 cargo build --package custom-pallet
 ```
+
+!!! tip
+    If your pallet isn't compiling successfully, compare your completed `lib.rs` file to the "Complete Pallet Code" example, make any needed changes, and run the preceding `build` command again.
+
+??? example "Complete Pallet Code"
+    ```rust
+    --8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/build-custom-pallet/lib.rs'
+    ```
+
+## Pallet Unit Testing
+
+With your custom pallet built and compiled, it's now time to create some unit tests to ensure everything works as expected. Follow these steps to test your custom pallet:
+
+### Set Up the Testing Environment
+
+1. Return to the terminal and move to the project directory
+
+    ```bash
+    cd custom-pallet
+    ```
+
+2. Add the required dependencies to your test configuration in the `Cargo.toml` file of the pallet:
+
+    ```toml
+    --8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/pallet-unit-testing/cargo-dev-dependencies.toml'
+    ```
+
+3. Create a `mock.rs` and a `tests.rs` files (leave these files empty for now, they will be filled in later):
+
+    ```bash
+    touch src/mock.rs
+    touch src/tests.rs
+    ```
+
+4. Include them in your `lib.rs` module:
+
+    ```rust
+    #[cfg(test)]
+    mod mock;
+
+    #[cfg(test)]
+    mod tests;
+    ```
+
+### Implement Mocked Runtime
+
+### Implement Test Cases
 
 ## Where to Go Next
 
@@ -287,9 +334,9 @@ A deeper dive into the concepts introduced in this tutorial
 
 - :octicons-goal-16:{ .lg .middle } [Set Up a Template](/tutorials/polkadot-sdk/parachains/guides/set-up-a-template/){target=\_blank}
 
-- :octicons-goal-16:{ .lg .middle } [Build a Custom Pallet](/tutorials/polkadot-sdk/parachains/guides/build-custom-pallet.md){target=\_blank}
+- :octicons-goal-16:{ .lg .middle } [Build a Custom Pallet](/tutorials/polkadot-sdk/parachains/guides/build-custom-pallet/){target=\_blank}
 
-- :octicons-goal-16:{ .lg .middle } [TODO](#){target=\_blank}
+- :octicons-goal-16:{ .lg .middle } [Pallet Unit Testing](/tutorials/polkadot-sdk/parachains/guides/pallet-unit-testing/){target=\_blank}
 
 - :octicons-goal-16:{ .lg .middle } [TODO](#){target=\_blank}
 
@@ -305,7 +352,9 @@ A deeper dive into the concepts introduced in this tutorial
 
 - :octicons-book-16:{ .lg .middle } [Polkadot Omni Node Rust docs](https://paritytech.github.io/polkadot-sdk/master/polkadot_sdk_docs/reference_docs/omni_node/index.html){target=\_blank}
 
-- [Polkadot.js Guides](https://wiki.polkadot.network/docs/learn-polkadot-js-guides){target=\_blank} on the Polkadot Wiki
+- :octicons-book-16:{ .lg .middle } [Polkadot.js Guides](https://wiki.polkadot.network/docs/learn-polkadot-js-guides){target=\_blank} on the Polkadot Wiki
+
+- :octicons-book-16:{ .lg .middle } [How to Write Tests in Rust](https://doc.rust-lang.org/book/ch11-01-writing-tests.html){target=\_blank}
 
 </div>
 
