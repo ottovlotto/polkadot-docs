@@ -143,23 +143,139 @@ Follow these steps to stop your local parachain node:
 
 ## Build a Custom Pallet
 
+Pallets are Rust-based runtime modules that each contain a specific set of blockchain functionalities. Follow these steps to create a simple counter pallet which allows root origin privileged users to set a starting value and other users to increment or decrement the counter. 
+
 ### Create a New Project
+
+The first step is to create a new Rust package for your pallet as follows:
+
+1. Using your terminal, navigate to the `pallets` directory in your workspace:
+
+    ```bash
+    cd pallets
+    ```
+
+2. Create a new Rust library project for your custom pallet by running the following command:
+
+    ```bash
+    cargo new --lib custom-pallet
+    ```
+
+3. Enter the new project directory:
+
+    ```bash
+    cd custom-pallet
+    ```
+
+4. Ensure the project was created successfully by checking its structure. The file layout should resemble the following:
+
+    ```
+    custom-pallet 
+    ├── Cargo.toml
+    └── src
+        └── lib.rs
+    ```
+
+Your project setup is now complete and you're ready to start building your custom pallet.
 
 ### Add Dependencies
 
+Follow these steps to add required dependencies to the `Cargo.toml` file of your pallet's project:
+
+1. Open your `Cargo.toml` file
+
+2. Add the required dependencies in the `[dependencies]` section:
+
+    ```toml
+    --8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/build-custom-pallet/Cargo.toml:10:14'
+    ```
+
+3. Enable `std` features:
+
+    ```toml
+    --8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/build-custom-pallet/Cargo.toml:16:18'
+    ```
+
+The final `Cargo.toml` should resemble the following:
+
+??? note "Complete `Cargo.toml` File"
+
+    ```toml
+    --8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/build-custom-pallet/Cargo.toml'
+    ```
+
 ### Add Scaffold Pallet Structure
 
-### Pallet Configuration
+You now have the bare minimum of package dependencies that your pallet requires specified in the Cargo.toml file. The next step is to prepare the scaffolding for your new pallet as follows:
+
+1. Open `src/lib.rs` in a text editor and delete all the content
+   
+2. Prepare the scaffolding for the pallet by adding the following:
+
+    ```rust
+    --8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/build-custom-pallet/scaffold.rs'
+    ```
+
+3. Verify that it compiles by running the following command:
+
+    ```bash
+    cargo build --package custom-pallet
+    ```
+
+    !!! tip
+        You may see `warning` statements in your terminal when you run this build command. As long as you see a "Finished `dev`" message, it is safe to continue on to the next steps.
+
+### Configure the Pallet
+
+Implementing the `#[pallet::config]` macro is mandatory to properly set the module's dependencies, types, and values to work with runtime-specific settings. Update your pallet's `#[pallet::config]` macro by following these steps:
+
+1. Open `src/lib.rs` and locate the `#[pallet::config]` macro. 
+
+2. Update the `Config` trait definition as follows:
+
+```rust
+--8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/build-custom-pallet/lib.rs:14:23'
+```
 
 ### Define Events 
 
+Now, you must define your pallet's events to emit signals to the outside world when specific actions occur. Define events to signal when the counter is set to a new value, incremented, or decremented by adding the following code to `src/lib.rs`:
+
+```rust
+--8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/build-custom-pallet/lib.rs:25:51'
+```
+
 ### Define Storage Items
+
+Storage items are used to manage the pallet's state. Define storage items to keep track of the current value of the counter and track the number of interactions each account has with the counter by adding the following code to `src/lib.rs`:
+
+```rust
+--8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/build-custom-pallet/lib.rs:53:59'
+```
 
 ### Implement Custom Errors
 
+To add custom errors, use the `#[pallet::error]` macro to define the `Error` enum as follows:
+
+```rust
+--8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/build-custom-pallet/lib.rs:61:71'
+```
+
 ### Implement Calls
 
+The `#[pallet::call]` macro defines the dispatchable functions (or calls) the pallet exposes to allow users or the runtime to interact with the pallet's logic and state. Update `src/lib.rs` to add the dispatchable calls for your counter pallet as follows:
+
+```rust
+--8<-- 'code/tutorials/polkadot-sdk/parachains/zero-to-hero/build-custom-pallet/call_structure.rs'
+```
+
 ### Verify Compilation
+
+Verifying that the code still compiles successfully after implementing all the pallet components is crucial. Run the following command in your terminal to ensure there are no errors:
+
+```bash
+cargo build --package custom-pallet
+```
 
 ## Where to Go Next
 
